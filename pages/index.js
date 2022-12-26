@@ -2,7 +2,7 @@ import { useEffect } from "react"
 
 export default function Home(props) {
   const { data } = props
-
+  if(!data) return null
   return (
     <div style={{marginLeft: 50, marginTop: 50}}>
       {data.resultados[0].id}
