@@ -1,19 +1,19 @@
 import { useEffect } from "react"
 
 export default function Home(props) {
-  const { result } = props
+  const { data } = props
 
   return (
     <div style={{marginLeft: 50, marginTop: 50}}>
-      {result}
-
+      {data.resultados[0].id}
     </div>
   )
 }
 
 export async function getStaticProps(context) {
-  const result = "Funcionando"
+  const result = await fetch("https://api-dev.infoimoveis.com.br/imoveis/")
+  const data = await result.json()
   return {
-    props: { result }, 
+    props: { data }, 
   }
 }
