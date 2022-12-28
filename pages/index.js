@@ -1,11 +1,23 @@
 import { useEffect } from "react"
+import Image from 'next/image'
 
 export default function Home(props) {
   const { data } = props
   if(!data) return null
   return (
-    <div style={{marginLeft: 50, marginTop: 50}}>
-      {data.resultados[0].id}
+    <div style={{display: 'flex', flexDirection: 'column',marginLeft: 50, marginTop: 50}}>
+      <div style={{}}>
+        {data.resultados[0].id}
+      </div>
+      <span>
+        {data.resultados[0].titulo}
+      </span>
+      <Image
+        src={`https://static-dev.infoimoveis.com.br/${data.resultados[0].imagem}`}
+        alt="Picture of the author"
+        width={500}
+        height={500}
+      />
     </div>
   )
 }
