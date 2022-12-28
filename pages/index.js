@@ -23,9 +23,9 @@ const cloudflareLoader = ({ src, width, quality }) => {
 
   return (
     <div style={{display: 'flex', flexDirection: 'column',marginLeft: 50, marginTop: 50}}>
-      {/* <span>
+      <span>
         {teste}
-      </span> */}
+      </span>
       <div style={{}}>
         {data.resultados[0].id}
       </div>
