@@ -18,14 +18,14 @@ const cloudflareLoader = ({ src, width, quality }) => {
       params.push(`quality=${quality}`);
     }
     const paramsString = params.join(',');
-    return `https://static-dev.infoimoveis.com.br/cdn-cgi/image/${paramsString}/${normalizeSrc(src)}`;
+    return `https://static-dev.infoimoveis.com.br/${normalizeSrc(src)}`;
 };
   return (
     <div style={{display: 'flex', flexDirection: 'column',marginLeft: 50, marginTop: 50}}>
       <span>
         {teste}
       </span>
-      <div style={{}}>
+      <div>
         {data.resultados[0].id}
       </div>
       <span>
