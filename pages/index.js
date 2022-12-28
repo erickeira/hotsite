@@ -21,7 +21,6 @@ const cloudflareLoader = ({ src, width, quality }) => {
 };
 
 
-
   return (
     <div style={{display: 'flex', flexDirection: 'column',marginLeft: 50, marginTop: 50}}>
       <span>
@@ -44,7 +43,7 @@ const cloudflareLoader = ({ src, width, quality }) => {
   )
 }
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
   const result = await fetch("https://api-dev.infoimoveis.com.br/imoveis/")
   const data = await result.json()
   return {
