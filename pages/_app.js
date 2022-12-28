@@ -5,8 +5,8 @@ export const runtime = 'experimental-edge';
 
 export default function App({ Component, pageProps }) {
   return (
-    <AuthProvider>
+    // <AuthProvider>
       <Component {...pageProps} />
-    </AuthProvider>
+    // </AuthProvider> 
   )
 }

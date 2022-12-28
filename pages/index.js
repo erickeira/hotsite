@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { AuthContext } from "../context"
 
 export default function Home(props) {
-  const { teste } = useContext(AuthContext)
+  // const { teste } = useContext(AuthContext)
   const { data } = props
   if(!data) return null
   const normalizeSrc = src => {
@@ -23,9 +23,9 @@ const cloudflareLoader = ({ src, width, quality }) => {
 
   return (
     <div style={{display: 'flex', flexDirection: 'column',marginLeft: 50, marginTop: 50}}>
-      <span>
+      {/* <span>
         {teste}
-      </span>
+      </span> */}
       <div style={{}}>
         {data.resultados[0].id}
       </div>
@@ -35,7 +35,7 @@ const cloudflareLoader = ({ src, width, quality }) => {
       <Image
         loader={cloudflareLoader}
         src={data.resultados[0].imagem}
-        alt="Picture of the author"
+        alt="Imóvel"
         width={500}
         height={500}
       />
