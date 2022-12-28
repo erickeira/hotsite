@@ -30,7 +30,7 @@ export default function Home(props) {
   )
 }
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   const result = await fetch("https://api-dev.infoimoveis.com.br/imoveis/")
   const data = await result.json()
   return {
