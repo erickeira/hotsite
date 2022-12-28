@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { AuthContext } from "../context"
 
 export default function Home(props) {
-  // const { teste } = useContext(AuthContext)
+  const { teste } = useContext(AuthContext)
   const { data } = props
   if(!data) return null
   const normalizeSrc = src => {
