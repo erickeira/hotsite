@@ -7,6 +7,7 @@ export default function Home(props) {
   const { teste } = useContext(AuthContext)
   const { data } = props
   if(!data) return null
+
   const normalizeSrc = src => {
     return src.startsWith('/') ? src.slice(1) : src;
   };
@@ -19,8 +20,6 @@ const cloudflareLoader = ({ src, width, quality }) => {
     const paramsString = params.join(',');
     return `https://static-dev.infoimoveis.com.br/cdn-cgi/image/${paramsString}/${normalizeSrc(src)}`;
 };
-
-
   return (
     <div style={{display: 'flex', flexDirection: 'column',marginLeft: 50, marginTop: 50}}>
       <span>
