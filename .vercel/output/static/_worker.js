@@ -37,7 +37,7 @@ var __publicField = (obj, key, value) => {
 var define_CONFIG_default;
 var init_define_CONFIG = __esm({
   "<define:__CONFIG__>"() {
-    define_CONFIG_default = { version: 3, routes: [{ src: "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$", headers: { Location: "/$1" }, status: 308, continue: true }, { src: "/_next/__private/trace", dest: "/404", status: 404, continue: true }, { src: "/404/?", status: 404, continue: true, missing: [{ type: "header", key: "x-prerender-revalidate" }] }, { src: "/500", status: 500, continue: true }, { handle: "filesystem" }, { src: "/_next/data/(.*)", dest: "/_next/data/$1", check: true }, { handle: "resource" }, { src: "/.*", status: 404 }, { handle: "miss" }, { src: "/_next/static/(?:[^/]+/pages|pages|chunks|runtime|css|image|media)/.+", status: 404, check: true, dest: "$0" }, { handle: "rewrite" }, { src: "/_next/data/(.*)", dest: "/404", status: 404 }, { handle: "hit" }, { src: "/_next/static/(?:[^/]+/pages|pages|chunks|runtime|css|image|media|jM13922Q8oskyU5TtS93e)/.+", headers: { "cache-control": "public,max-age=31536000,immutable" }, continue: true, important: true }, { src: "/index", headers: { "x-matched-path": "/" }, continue: true, important: true }, { src: "/((?!index$).*)", headers: { "x-matched-path": "/$1" }, continue: true, important: true }, { handle: "error" }, { src: "/.*", dest: "/404", status: 404 }, { src: "/.*", dest: "/500", status: 500 }], images: { domains: [], sizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840, 16, 32, 48, 64, 96, 128, 256, 384], remotePatterns: [], minimumCacheTTL: 60, formats: ["image/webp"], dangerouslyAllowSVG: false, contentSecurityPolicy: "script-src 'none'; frame-src 'none'; sandbox;" }, overrides: { "404.html": { path: "404", contentType: "text/html; charset=utf-8" }, "500.html": { path: "500", contentType: "text/html; charset=utf-8" } } };
+    define_CONFIG_default = { version: 3, routes: [{ src: "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$", headers: { Location: "/$1" }, status: 308, continue: true }, { src: "/_next/__private/trace", dest: "/404", status: 404, continue: true }, { src: "/404/?", status: 404, continue: true, missing: [{ type: "header", key: "x-prerender-revalidate" }] }, { src: "/500", status: 500, continue: true }, { handle: "filesystem" }, { src: "/_next/data/(.*)", dest: "/_next/data/$1", check: true }, { handle: "resource" }, { src: "/.*", status: 404 }, { handle: "miss" }, { src: "/_next/static/(?:[^/]+/pages|pages|chunks|runtime|css|image|media)/.+", status: 404, check: true, dest: "$0" }, { handle: "rewrite" }, { src: "/_next/data/(.*)", dest: "/404", status: 404 }, { handle: "hit" }, { src: "/_next/static/(?:[^/]+/pages|pages|chunks|runtime|css|image|media|VgBSsymTUr8cJZHSFrfik)/.+", headers: { "cache-control": "public,max-age=31536000,immutable" }, continue: true, important: true }, { src: "/index", headers: { "x-matched-path": "/" }, continue: true, important: true }, { src: "/((?!index$).*)", headers: { "x-matched-path": "/$1" }, continue: true, important: true }, { handle: "error" }, { src: "/.*", dest: "/404", status: 404 }, { src: "/.*", dest: "/500", status: 500 }], images: { domains: [], sizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840, 16, 32, 48, 64, 96, 128, 256, 384], remotePatterns: [], minimumCacheTTL: 60, formats: ["image/webp"], dangerouslyAllowSVG: false, contentSecurityPolicy: "script-src 'none'; frame-src 'none'; sandbox;" }, overrides: { "404.html": { path: "404", contentType: "text/html; charset=utf-8" }, "500.html": { path: "500", contentType: "text/html; charset=utf-8" } } };
   }
 });
 
@@ -48,19 +48,19 @@ var init_globals = __esm({
   }
 });
 
-// ../../../../../private/var/folders/f2/wxtrqvqx3ms_nbk6mf806f3m0000gn/T/n767p2uhxr/index.func.js
+// ../../../../../private/var/folders/f2/wxtrqvqx3ms_nbk6mf806f3m0000gn/T/6kdx0pklvn9/index.func.js
 var index_func_exports = {};
 __export(index_func_exports, {
   default: () => index_func_default
 });
 var _ENTRIES, index_func_default;
 var init_index_func = __esm({
-  "../../../../../private/var/folders/f2/wxtrqvqx3ms_nbk6mf806f3m0000gn/T/n767p2uhxr/index.func.js"() {
+  "../../../../../private/var/folders/f2/wxtrqvqx3ms_nbk6mf806f3m0000gn/T/6kdx0pklvn9/index.func.js"() {
     init_define_CONFIG();
     init_globals();
-    init_functions_9umujldg3bn();
+    init_functions_25rdzxtv57m();
     _ENTRIES = {};
-    self.__BUILD_MANIFEST = { polyfillFiles: ["static/chunks/polyfills-c67a75d1b6f99dc8.js"], devFiles: [], ampDevFiles: [], lowPriorityFiles: ["static/jM13922Q8oskyU5TtS93e/_buildManifest.js", "static/jM13922Q8oskyU5TtS93e/_ssgManifest.js"], rootMainFiles: [], pages: { "/": ["static/chunks/webpack-8fa1640cc84ba8fe.js", "static/chunks/framework-c177813b50544101.js", "static/chunks/main-db2e19ef8ac40d4f.js", "static/chunks/pages/index-6969fd4755f38400.js"], "/_app": ["static/chunks/webpack-8fa1640cc84ba8fe.js", "static/chunks/framework-c177813b50544101.js", "static/chunks/main-db2e19ef8ac40d4f.js", "static/css/876d048b5dab7c28.css", "static/chunks/pages/_app-657ed7a84922f3b3.js"], "/_error": ["static/chunks/webpack-8fa1640cc84ba8fe.js", "static/chunks/framework-c177813b50544101.js", "static/chunks/main-db2e19ef8ac40d4f.js", "static/chunks/pages/_error-8353112a01355ec2.js"] }, ampFirstPages: [] };
+    self.__BUILD_MANIFEST = { polyfillFiles: ["static/chunks/polyfills-c67a75d1b6f99dc8.js"], devFiles: [], ampDevFiles: [], lowPriorityFiles: ["static/VgBSsymTUr8cJZHSFrfik/_buildManifest.js", "static/VgBSsymTUr8cJZHSFrfik/_ssgManifest.js"], rootMainFiles: [], pages: { "/": ["static/chunks/webpack-8fa1640cc84ba8fe.js", "static/chunks/framework-c177813b50544101.js", "static/chunks/main-db2e19ef8ac40d4f.js", "static/chunks/pages/index-6969fd4755f38400.js"], "/_app": ["static/chunks/webpack-8fa1640cc84ba8fe.js", "static/chunks/framework-c177813b50544101.js", "static/chunks/main-db2e19ef8ac40d4f.js", "static/css/876d048b5dab7c28.css", "static/chunks/pages/_app-657ed7a84922f3b3.js"], "/_error": ["static/chunks/webpack-8fa1640cc84ba8fe.js", "static/chunks/framework-c177813b50544101.js", "static/chunks/main-db2e19ef8ac40d4f.js", "static/chunks/pages/_error-8353112a01355ec2.js"] }, ampFirstPages: [] };
     self.__REACT_LOADABLE_MANIFEST = {};
     self.__FONT_LOADER_MANIFEST = { pages: {}, app: {} };
     (() => {
@@ -192,7 +192,7 @@ var init_index_func = __esm({
       })();
     })();
     (self.webpackChunk_N_E = self.webpackChunk_N_E || []).push([[405], { 350: () => {
-    }, 188: (e, t, r) => {
+    }, 838: (e, t, r) => {
       var _a, _b;
       "use strict";
       let n, a, i;
@@ -3088,7 +3088,7 @@ Try changing the value to '${Math.ceil(eo2.revalidate)}' or using \`Math.ceil()\
       nw.displayName = "ErrorPage", nw.getInitialProps = nb, nw.origGetInitialProps = nb, ev();
       let nS = self.__BUILD_MANIFEST, n_ = self.__REACT_LOADABLE_MANIFEST;
       self.__RSC_MANIFEST, self.__RSC_CSS_MANIFEST;
-      let nC = self.__SUBRESOURCE_INTEGRITY_MANIFEST, nE = self.__FONT_LOADER_MANIFEST, nR = tZ({ pageType: "pages", dev: false, page: "/", appMod: u, pageMod: l, errorMod: c, error500Mod: null, Document: ru, buildManifest: nS, appRenderToHTML: null, pagesRenderToHTML: nd, reactLoadableManifest: n_, serverComponentManifest: null, serverCSSManifest: null, subresourceIntegrityManifest: nC, config: { env: {}, webpack: null, webpackDevMiddleware: null, eslint: { ignoreDuringBuilds: false }, typescript: { ignoreBuildErrors: false, tsconfigPath: "tsconfig.json" }, distDir: ".next", cleanDistDir: true, assetPrefix: "", configOrigin: "next.config.js", useFileSystemPublicRoutes: true, generateEtags: true, pageExtensions: ["tsx", "ts", "jsx", "js"], target: "server", poweredByHeader: true, compress: true, analyticsId: "", images: { deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840], imageSizes: [16, 32, 48, 64, 96, 128, 256, 384], path: "/_next/image", loader: "default", loaderFile: "", domains: [], disableStaticImages: false, minimumCacheTTL: 60, formats: ["image/webp"], dangerouslyAllowSVG: false, contentSecurityPolicy: "script-src 'none'; frame-src 'none'; sandbox;", remotePatterns: [], unoptimized: false }, devIndicators: { buildActivity: true, buildActivityPosition: "bottom-right" }, onDemandEntries: { maxInactiveAge: 15e3, pagesBufferLength: 2 }, amp: { canonicalBase: "" }, basePath: "", sassOptions: {}, trailingSlash: false, i18n: null, productionBrowserSourceMaps: false, optimizeFonts: true, excludeDefaultMomentLocales: true, serverRuntimeConfig: {}, publicRuntimeConfig: {}, reactStrictMode: true, httpAgentOptions: { keepAlive: true }, outputFileTracing: true, staticPageGenerationTimeout: 60, swcMinify: true, experimental: { fetchCache: false, middlewarePrefetch: "flexible", optimisticClientCache: true, runtime: "experimental-edge", manualClientBasePath: false, legacyBrowsers: false, newNextLinkBehavior: true, cpus: 5, sharedPool: true, profiling: false, isrFlushToDisk: true, workerThreads: false, pageEnv: false, optimizeCss: false, nextScriptWorkers: false, scrollRestoration: false, externalDir: false, disableOptimizedLoading: false, gzipSize: true, swcFileReading: true, craCompat: false, esmExternals: true, appDir: false, isrMemoryCacheSize: 52428800, fullySpecified: false, outputFileTracingRoot: "/Users/infoshop/Documents/Nextjs/hotsite", swcTraceProfiling: false, forceSwcTransforms: false, largePageDataBytes: 128e3, enableUndici: false, adjustFontFallbacks: false, adjustFontFallbacksWithSizeAdjust: false, fontLoaders: [{ loader: "@next/font/google" }, { loader: "@next/font/local" }] }, configFile: "/Users/infoshop/Documents/Nextjs/hotsite/next.config.js", configFileName: "next.config.js" }, buildId: "jM13922Q8oskyU5TtS93e", fontLoaderManifest: nE }), nP = l;
+      let nC = self.__SUBRESOURCE_INTEGRITY_MANIFEST, nE = self.__FONT_LOADER_MANIFEST, nR = tZ({ pageType: "pages", dev: false, page: "/", appMod: u, pageMod: l, errorMod: c, error500Mod: null, Document: ru, buildManifest: nS, appRenderToHTML: null, pagesRenderToHTML: nd, reactLoadableManifest: n_, serverComponentManifest: null, serverCSSManifest: null, subresourceIntegrityManifest: nC, config: { env: {}, webpack: null, webpackDevMiddleware: null, eslint: { ignoreDuringBuilds: false }, typescript: { ignoreBuildErrors: false, tsconfigPath: "tsconfig.json" }, distDir: ".next", cleanDistDir: true, assetPrefix: "", configOrigin: "next.config.js", useFileSystemPublicRoutes: true, generateEtags: true, pageExtensions: ["tsx", "ts", "jsx", "js"], target: "server", poweredByHeader: true, compress: true, analyticsId: "", images: { deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840], imageSizes: [16, 32, 48, 64, 96, 128, 256, 384], path: "/_next/image", loader: "default", loaderFile: "", domains: [], disableStaticImages: false, minimumCacheTTL: 60, formats: ["image/webp"], dangerouslyAllowSVG: false, contentSecurityPolicy: "script-src 'none'; frame-src 'none'; sandbox;", remotePatterns: [], unoptimized: false }, devIndicators: { buildActivity: true, buildActivityPosition: "bottom-right" }, onDemandEntries: { maxInactiveAge: 15e3, pagesBufferLength: 2 }, amp: { canonicalBase: "" }, basePath: "", sassOptions: {}, trailingSlash: false, i18n: null, productionBrowserSourceMaps: false, optimizeFonts: true, excludeDefaultMomentLocales: true, serverRuntimeConfig: {}, publicRuntimeConfig: {}, reactStrictMode: true, httpAgentOptions: { keepAlive: true }, outputFileTracing: true, staticPageGenerationTimeout: 60, swcMinify: true, experimental: { fetchCache: false, middlewarePrefetch: "flexible", optimisticClientCache: true, runtime: "experimental-edge", manualClientBasePath: false, legacyBrowsers: false, newNextLinkBehavior: true, cpus: 5, sharedPool: true, profiling: false, isrFlushToDisk: true, workerThreads: false, pageEnv: false, optimizeCss: false, nextScriptWorkers: false, scrollRestoration: false, externalDir: false, disableOptimizedLoading: false, gzipSize: true, swcFileReading: true, craCompat: false, esmExternals: true, appDir: false, isrMemoryCacheSize: 52428800, fullySpecified: false, outputFileTracingRoot: "/Users/infoshop/Documents/Nextjs/hotsite", swcTraceProfiling: false, forceSwcTransforms: false, largePageDataBytes: 128e3, enableUndici: false, adjustFontFallbacks: false, adjustFontFallbacksWithSizeAdjust: false, fontLoaders: [{ loader: "@next/font/google" }, { loader: "@next/font/local" }] }, configFile: "/Users/infoshop/Documents/Nextjs/hotsite/next.config.js", configFileName: "next.config.js" }, buildId: "VgBSsymTUr8cJZHSFrfik", fontLoaderManifest: nE }), nP = l;
       function nk(e10) {
         return em({ ...e10, handler: nR });
       }
@@ -5297,7 +5297,7 @@ Try changing the value to '${Math.ceil(eo2.revalidate)}' or using \`Math.ceil()\
       "use strict";
       e.exports = {};
     } }, (e) => {
-      var t = e(e.s = 188);
+      var t = e(e.s = 838);
       (_ENTRIES = "undefined" == typeof _ENTRIES ? {} : _ENTRIES)["middleware_pages/index"] = t;
     }]);
     index_func_default = function() {
@@ -5392,17 +5392,17 @@ Try changing the value to '${Math.ceil(eo2.revalidate)}' or using \`Math.ceil()\
   }
 });
 
-// ../../../../../private/var/folders/f2/wxtrqvqx3ms_nbk6mf806f3m0000gn/T/n767p2uhxr/api/hello.func.js
+// ../../../../../private/var/folders/f2/wxtrqvqx3ms_nbk6mf806f3m0000gn/T/6kdx0pklvn9/api/hello.func.js
 var hello_func_exports = {};
 __export(hello_func_exports, {
   default: () => hello_func_default
 });
 var _ENTRIES2, hello_func_default;
 var init_hello_func = __esm({
-  "../../../../../private/var/folders/f2/wxtrqvqx3ms_nbk6mf806f3m0000gn/T/n767p2uhxr/api/hello.func.js"() {
+  "../../../../../private/var/folders/f2/wxtrqvqx3ms_nbk6mf806f3m0000gn/T/6kdx0pklvn9/api/hello.func.js"() {
     init_define_CONFIG();
     init_globals();
-    init_functions_9umujldg3bn();
+    init_functions_25rdzxtv57m();
     _ENTRIES2 = {};
     (() => {
       "use strict";
@@ -6218,10 +6218,10 @@ Learn More: https://nextjs.org/docs/messages/node-module-in-edge-runtime`;
   }
 });
 
-// ../../../../../var/folders/f2/wxtrqvqx3ms_nbk6mf806f3m0000gn/T/functions-9umujldg3bn.js
+// ../../../../../var/folders/f2/wxtrqvqx3ms_nbk6mf806f3m0000gn/T/functions-25rdzxtv57m.js
 var __FUNCTIONS__, __MIDDLEWARE__;
-var init_functions_9umujldg3bn = __esm({
-  "../../../../../var/folders/f2/wxtrqvqx3ms_nbk6mf806f3m0000gn/T/functions-9umujldg3bn.js"() {
+var init_functions_25rdzxtv57m = __esm({
+  "../../../../../var/folders/f2/wxtrqvqx3ms_nbk6mf806f3m0000gn/T/functions-25rdzxtv57m.js"() {
     __FUNCTIONS__ = { "index": { matchers: [{ "regexp": "^/$" }], entrypoint: (init_index_func(), __toCommonJS(index_func_exports)) }, "api/hello": { matchers: [{ "regexp": "^/api/hello$" }], entrypoint: (init_hello_func(), __toCommonJS(hello_func_exports)) } };
     __MIDDLEWARE__ = {};
   }
@@ -6233,7 +6233,7 @@ var require_cookie = __commonJS({
     "use strict";
     init_define_CONFIG();
     init_globals();
-    init_functions_9umujldg3bn();
+    init_functions_25rdzxtv57m();
     exports.parse = parse2;
     exports.serialize = serialize;
     var __toString = Object.prototype.toString;
@@ -6375,7 +6375,7 @@ var require_cookie = __commonJS({
 // node_modules/@cloudflare/next-on-pages/templates/_worker.js/index.ts
 init_define_CONFIG();
 init_globals();
-init_functions_9umujldg3bn();
+init_functions_25rdzxtv57m();
 var import_cookie = __toESM(require_cookie());
 var hasField = ({
   request,
