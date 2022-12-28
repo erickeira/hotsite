@@ -1,13 +1,18 @@
-import { useEffect } from "react"
+import { useContext, useEffect } from "react"
 import Image from 'next/image'
 import { cloudflareLoader } from '../utils'
+import { AuthContext } from "../context"
 
 export default function Home(props) {
+  const { teste } = useContext(AuthContext)
   const { data } = props
   if(!data) return null
 
   return (
     <div style={{display: 'flex', flexDirection: 'column',marginLeft: 50, marginTop: 50}}>
+      <span>
+        {teste}
+      </span>
       <div style={{}}>
         {data.resultados[0].id}
       </div>
