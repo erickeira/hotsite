@@ -33,155 +33,154 @@ export default function ListImoveis(props) {
     const [ cidades, setCidades ] = useState([]);        
     const [ bairro, setBairro ] = useState([]); 
 
-    useEffect(()=>{
-        if(finalidadePagina){
-            getDados({...queryInicial, ...{ finalidade : finalidadePagina || ''}})
-            mudarDadosFormulario({finalidade : finalidadePagina})
-        }else{
-            getDados(queryInicial)
-        }
-        if(queryInicial.uf) getCidade(queryInicial.uf)
-        if(queryInicial.cidade) getBairro(queryInicial.cidade)
-        if(!queryInicial.uf && !queryInicial.cidade) setLoadingDados(false)
-    },[]);
+    // useEffect(()=>{
+    //     if(finalidadePagina){
+    //         getDados({...queryInicial, ...{ finalidade : finalidadePagina || ''}})
+    //         mudarDadosFormulario({finalidade : finalidadePagina})
+    //     }else{
+    //         getDados(queryInicial)
+    //     }
+    //     if(queryInicial.uf) getCidade(queryInicial.uf)
+    //     if(queryInicial.cidade) getBairro(queryInicial.cidade)
+    //     if(!queryInicial.uf && !queryInicial.cidade) setLoadingDados(false)
+    // },[]);
 
-    useEffect(() => {
-        handleRequisicao()
-    },[pagina])
+    // useEffect(() => {
+    //     handleRequisicao()
+    // },[pagina])
 
-    function mudarDadosFormulario(dados){
-     setFormulario({...formulario, ...dados});
-    }
+    // function mudarDadosFormulario(dados){
+    //  setFormulario({...formulario, ...dados});
+    // }
  
-    useEffect(() => {
-        if (window.innerWidth > 770) return 
-         handleRequisicao()
-    }, [formulario]);
+    // useEffect(() => {
+    //     if (window.innerWidth > 770) return 
+    //      handleRequisicao()
+    // }, [formulario]);
 
-    function handleRequisicao(){
-        router.push({
-            pathname:"/busca",
-            query: {...formulario,...{pg: pagina}},
-        })
+    // function handleRequisicao(){
+    //     router.push({
+    //         pathname:"/busca",
+    //         query: {...formulario,...{pg: pagina}},
+    //     })
 
-        if (formulario.uf) getCidade(formulario.uf);
-        if (formulario.cidade) getBairro(formulario.cidade);       
-        getDados({...formulario,...{pg: pagina}});
-        handleScroll()
-    }
+    //     if (formulario.uf) getCidade(formulario.uf);
+    //     if (formulario.cidade) getBairro(formulario.cidade);       
+    //     getDados({...formulario,...{pg: pagina}});
+    //     handleScroll()
+    // }
    
-    function handleScroll() {
-        window.scroll({ top: 0, left: 0, behavior: 'smooth' });
-    }
+    // function handleScroll() {
+    //     window.scroll({ top: 0, left: 0, behavior: 'smooth' });
+    // }
 
-    async function getCidade(valor) {
-        setLoadingDados(true)
-        const metodo =  "cidades";
-        const data = await utils( metodo ,valor);
-        setCidades(data.cidades); 
-        setLoadingDados(false)
-    }
+    // async function getCidade(valor) {
+    //     setLoadingDados(true)
+    //     const metodo =  "cidades";
+    //     const data = await utils( metodo ,valor);
+    //     setCidades(data.cidades); 
+    //     setLoadingDados(false)
+    // }
 
-    async function getBairro(valor) {
-        const metodo =  "bairros";
-        const data = await utils( metodo ,valor);         
-        setBairro(data.bairros); 
-        setLoadingDados(false)
-    }
+    // async function getBairro(valor) {
+    //     const metodo =  "bairros";
+    //     const data = await utils( metodo ,valor);         
+    //     setBairro(data.bairros); 
+    //     setLoadingDados(false)
+    // }
     
-    async function handleOptionChange(tipo, valor) {
-        switch (tipo) {
+    // async function handleOptionChange(tipo, valor) {
+    //     switch (tipo) {
             
-            case 'finalidade':
-                const response = await getValores('valores', valor);
-                setValores(response.valores)
-                setFormulario({ ...formulario, ...{finalidade: valor, valorde: parseInt(response.valores.valor_minimo), valorate: parseInt(response.valores.valor_maximo)} });
-                break;
-            case 'tipo':
-                setFormulario({ ...formulario, ...{tipo: valor} });
-                break;
+    //         case 'finalidade':
+    //             const response = await getValores('valores', valor);
+    //             setValores(response.valores)
+    //             setFormulario({ ...formulario, ...{finalidade: valor, valorde: parseInt(response.valores.valor_minimo), valorate: parseInt(response.valores.valor_maximo)} });
+    //             break;
+    //         case 'tipo':
+    //             setFormulario({ ...formulario, ...{tipo: valor} });
+    //             break;
 
-            case 'uf':
-                setFormulario({ ...formulario, uf: valor });
-                setCidades([{value: '', label: 'Carregando'}]);
-                getCidade(valor)
-                break;
+    //         case 'uf':
+    //             setFormulario({ ...formulario, uf: valor });
+    //             setCidades([{value: '', label: 'Carregando'}]);
+    //             getCidade(valor)
+    //             break;
 
-            case 'cidade':
-                setFormulario({ ...formulario, cidade: valor });
-                setBairro([{value: '', label: 'Carregando'}]);
-                getBairro(valor)
-                break;
+    //         case 'cidade':
+    //             setFormulario({ ...formulario, cidade: valor });
+    //             setBairro([{value: '', label: 'Carregando'}]);
+    //             getBairro(valor)
+    //             break;
 
-            case 'bairro':
-                setFormulario({ ...formulario, bairro: valor }); 
-                break;
+    //         case 'bairro':
+    //             setFormulario({ ...formulario, bairro: valor }); 
+    //             break;
 
-            case 'valorde':
-                setFormulario({ ...formulario, valorde: valor });
-                break;
+    //         case 'valorde':
+    //             setFormulario({ ...formulario, valorde: valor });
+    //             break;
 
-            case 'valorate':
-                setFormulario({ ...formulario, valorate: valor }); 
-                break;
+    //         case 'valorate':
+    //             setFormulario({ ...formulario, valorate: valor }); 
+    //             break;
                 
-            default:
+    //         default:
                 
-                break;
-        }
+    //             break;
+    //     }
         
       
        
-    }
+    // }
 
-    async function handleSubmit() {
-        setLoading(true);
-        router.push({
-            pathname: '/busca',
-            query: {...formulario,...{pg: pagina}},
-        })
+    // async function handleSubmit() {
+    //     setLoading(true);
+    //     router.push({
+    //         pathname: '/busca',
+    //         query: {...formulario,...{pg: pagina}},
+    //     })
 
-        getDados({...formulario,...{pg: pagina}});
+    //     getDados({...formulario,...{pg: pagina}});
         
-    }
+    // }
     
-    async function getDados({ ...search }) {
-        setLoading(true);
-        let auxSearch = {...search}
-        if(auxSearch.finalidade) auxSearch.finalidade = auxSearch.finalidade == "Venda"? 2:1;
-        const corpo = JSON.stringify( {
-            acoes: [  
+    // async function getDados({ ...search }) {
+    //     setLoading(true);
+    //     let auxSearch = {...search}
+    //     if(auxSearch.finalidade) auxSearch.finalidade = auxSearch.finalidade == "Venda"? 2:1;
+    //     const corpo = JSON.stringify( {
+    //         acoes: [  
                 
-                { 
-                    metodo: "busca", 
-                    params: [ 
-                        {                             
-                            resultados: 12,
-                            ...auxSearch
-                        }]
-                }
-            ], id: apiId
-        });
+    //             { 
+    //                 metodo: "busca", 
+    //                 params: [ 
+    //                     {                             
+    //                         resultados: 12,
+    //                         ...auxSearch
+    //                     }]
+    //             }
+    //         ], id: apiId
+    //     });
         
-        const response =  await fetch(
-            apiUrl,
-            {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: corpo
-            }
+    //     const response =  await fetch(
+    //         apiUrl,
+    //         {
+    //             method: 'POST',
+    //             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    //             body: corpo
+    //         }
         
-        );
-        const list = await response.json()
-        setTotalImoveis(list.busca.total_registros);
-        setImoveis(list.busca.total_registros ? list.busca.imoveis : []);
-        
-        setTimeout(() => {setLoading(false)}, 100);
+    //     );
+    //     const list = await response.json()
+    //     setTotalImoveis(list.busca.total_registros);
+    //     setImoveis(list.busca.total_registros ? list.busca.imoveis : []);
+    //     setTimeout(() => {setLoading(false)}, 100);
       
-    }
+    // }
 
-    let renderSkeletonList = [];
-    for (let i = 0; i < itensPorPagina; i++) { renderSkeletonList[i] = i; }
+    // let renderSkeletonList = [];
+    // for (let i = 0; i < itensPorPagina; i++) { renderSkeletonList[i] = i; }
 
     return (
 
