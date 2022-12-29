@@ -180,6 +180,10 @@ const cloudflareLoader = ({ src, width, quality }) => {
     return `https://static-dev.infoimoveis.com.br/${normalizeSrc(src)}`;
 };
 
+const loaderImage = ({ src, width, quality }) => {
+    return `${normalizeSrc(src)}`;
+};
+
 
  
 export { 
@@ -207,7 +211,8 @@ export {
     reloadTime,
     urlFavicon,
     urlFacebook,
-    urlInstagram
+    urlInstagram,
+    loaderImage
 }
 
 

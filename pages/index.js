@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 // import { cloudflareLoader } from '../utils'
 import { AuthContext } from "../context"
-import { apiUrl, apiId, urlImgs, moneyFormatter, cloudflareLoader, titleSite, urlFavicon, descriptionDefault, urlSite } from '../utils';
+import { apiUrl, apiId, urlImgs, moneyFormatter, cloudflareLoader, titleSite, urlFavicon, descriptionDefault, urlSite, loaderImage } from '../utils';
 import Link from 'next/link';
 import Place from '../public/img/place.svg';
 import ContentHeader from '../components/ContentHeaderMain';
@@ -99,7 +99,7 @@ export default function Home(props) {
                                   </div>
                                   
                                   <div className="endereco font-12 line-height-130">
-                                      <Image src={Place}  width={72} height={16} alt=""  />
+                                      <Image src={Place} loader={loaderImage} width={72} height={16} alt=""  />
                                       {`${dest.bairro} | ${dest.cidade}/${dest.uf}`}
                                   </div>
                                   
