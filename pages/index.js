@@ -1,51 +1,38 @@
-import { useContext, useEffect } from "react"
+import React, { useState, useEffect, useContext } from 'react';
 import Image from 'next/image'
 // import { cloudflareLoader } from '../utils'
 import { AuthContext } from "../context"
+import { apiUrl, apiId } from '../utils';
 
 export default function Home(props) {
-  const { teste } = useContext(AuthContext)
-  const { data } = props
-  if(!data) return null
+  const { destaques , noticias } = props
 
-  const normalizeSrc = src => {
-    return src.startsWith('/') ? src.slice(1) : src;
-  };
-
-const cloudflareLoader = ({ src, width, quality }) => {
-    const params = [`width=${width}`];
-    if (quality) {
-      params.push(`quality=${quality}`);
-    }
-    const paramsString = params.join(',');
-    return `https://static-dev.infoimoveis.com.br/${normalizeSrc(src)}`;
-};
   return (
     <div style={{display: 'flex', flexDirection: 'column',marginLeft: 50, marginTop: 50}}>
-      <span>
-        {teste}
-      </span>
-      <div>
-        {data.resultados[0].id}
-      </div>
-      <span>
-        {data.resultados[0].titulo}
-      </span>
-      <Image
-        loader={cloudflareLoader}
-        src={data.resultados[0].imagem}
-        alt="Imóvel"
-        width={500}
-        height={500}
-      />
+      funcionando
+      {destaques[0].id}
     </div>
   )
 }
 
-export async function getStaticProps(context) {
-  const result = await fetch("https://api-dev.infoimoveis.com.br/imoveis/")
-  const data = await result.json()
+export async function getServerSideProps({req, res}) {
+  const corpo = JSON.stringify( {
+    acoes: [                        
+      { metodo: "destaques", params: [ { resultados: "4" }] },
+      { metodo: "ultimasnoticias", params: [ { resultados: "4" }] },
+    ], id: apiId
+  });
+
+  const response = await fetch(
+      apiUrl,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: corpo
+      }
+  )
+  const list = await response.json()
   return {
-    props: { data }, 
+    props: list, 
   }
 }
