@@ -64,8 +64,6 @@ export default function ListImoveis(props) {
         if(!queryInicial.uf && !queryInicial.cidade) setLoadingDados(false)
     },[]);
 
-    console.log(queryInicial)
-
     useEffect(() => {
         handleRequisicao()
     },[pagina])
@@ -132,15 +130,15 @@ export default function ListImoveis(props) {
      }
 
     function handleRequisicao(){
-        // router.push({
-        //     pathname:"/busca",
-        //     query: {...formulario,...{pg: pagina}},
-        // })
+        router.push({
+            pathname:"/busca",
+            query: {...formulario,...{pg: pagina}},
+        })
 
-        // if (formulario.uf) getCidade(formulario.uf);
-        // if (formulario.cidade) getBairro(formulario.cidade);       
-        // getDados({...formulario,...{pg: pagina}});
-        // handleScroll()
+        if (formulario.uf) getCidade(formulario.uf);
+        if (formulario.cidade) getBairro(formulario.cidade);       
+        getDados({...formulario,...{pg: pagina}});
+        handleScroll()
     }
    
     function handleScroll() {
