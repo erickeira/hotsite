@@ -51,6 +51,7 @@ export default function ListImoveis(props) {
     const [ loadingDados, setLoadingDados ] = useState(true);    
     const [ cidades, setCidades ] = useState([]);        
     const [ bairro, setBairro ] = useState([]); 
+    let cont = 1 
 
     useEffect(()=>{
         if(finalidadePagina){
@@ -205,8 +206,6 @@ export default function ListImoveis(props) {
        
     }
 
-    console.log(formulario)
-
     async function handleSubmit() {
         setLoading(true);
         router.push({
@@ -218,7 +217,8 @@ export default function ListImoveis(props) {
         
     }
     
-    async function getDados({ ...search }) {     
+    async function getDados({ ...search }) {
+        return
         setLoading(true);
         let auxSearch = {...search}
         if(auxSearch.finalidade) auxSearch.finalidade = auxSearch.finalidade == "Venda"? 2:1;
