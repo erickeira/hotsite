@@ -6,7 +6,7 @@ import { Range } from 'react-range';
 import QueryString from 'querystring';
 import {AuthContext} from '../../context';
 // import Valores from '../../pages/api/valores';
-import { moneyFormatter } from '../../utils';
+import { apiId, apiUrl, moneyFormatter } from '../../utils';
 
 
 const customStyles = {
@@ -50,45 +50,96 @@ export default function ContentHeader(props) {
         setFormulario({...formulario, ...dados});
     }
     
-    async function handleOptionChange(tipo, valor) {
+    async function utils (metodo , valor){
+        const reqMetodo = metodo;
+ 
+        const corpo = JSON.stringify( {
+              acoes: [    
+                  //  metodo: "cidades",  //  metodo: "bairros",  //  metodo: "valores", 
+                  { metodo: reqMetodo, params: [{ registro: valor }]}
+              ], id: apiId
+            });
+          
+          const response =  await fetch(
+              apiUrl,
+              {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: corpo
+              }
+          
+          );
+          const list = await response.json()
+          return list
+    }
+
+    async function getValores(metodo , valor) {
+         const reqMetodo = metodo;
+         
+           
+           if (valor == "Aluguel"){
+            valor =1;
+           }
+           else valor =2; 
         
-        // if (tipo === 'finalidade') {
-        //     let acao = "valores"
-        //     let data = await Valores(acao ,valor);
-        //     let response = await data.json();
-        //     setValores(response.valores)
-        //     setFormulario (  { ...formulario, finalidade: valor, valorde: parseInt(response.valores.valor_minimo), valorate: parseInt(response.valores.valor_maximo) });
        
-        // } else if (tipo === 'tipo') {
-        //     setFormulario({ ...formulario, tipo: valor });
-        // } else if (tipo === 'uf') {
-        //     let acao = "cidades"
-        //     setFormulario({ ...formulario, uf: valor });
-        //     setCidade([{value: '', label: 'Carregando'}]);
-        //     let data = await utils(acao ,valor);
-        //     let response = await data.json();            
-        //     setCidade(response.cidades);
+        const corpo = JSON.stringify( {
+              acoes: [    
+                  
+                  { metodo: reqMetodo, params: [{finalidade : valor }]}
+              ], id: apiId
+            });
+          
+          const response =  await fetch(
+              apiUrl,
+              {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: corpo
+              }
+          
+          );
+          const list = await response.json()
+          return list 
+      }
+      
+
+
+    async function handleOptionChange(tipo, valor) {
+        if (tipo === 'finalidade') {
+            let acao = "valores"
+            let response = await getValores(acao ,valor);
+            setValores(response.valores)
+            setFormulario (  { ...formulario, finalidade: valor, valorde: parseInt(response.valores.valor_minimo), valorate: parseInt(response.valores.valor_maximo) });
+       
+        } else if (tipo === 'tipo') {
+            setFormulario({ ...formulario, tipo: valor });
+        } else if (tipo === 'uf') {
+            let acao = "cidades"
+            setFormulario({ ...formulario, uf: valor });
+            setCidade([{value: '', label: 'Carregando'}]);
+            let response = await utils(acao ,valor);          
+            setCidade(response.cidades);
              
-        // } else if (tipo === 'cidade') {
-        //     let acao = "bairros"
-        //     setFormulario({ ...formulario, cidade: valor });
-        //     setBairro([{value: '', label: 'Carregando'}]);
-        //     let data = await utils(acao ,valor);
-        //     let response = await data.json();          
-        //     setBairro(response.bairros);
+        } else if (tipo === 'cidade') {
+            let acao = "bairros"
+            setFormulario({ ...formulario, cidade: valor });
+            setBairro([{value: '', label: 'Carregando'}]);
+            let response = await utils(acao ,valor);    
+            setBairro(response.bairros);
             
-        // } else if (tipo === 'bairro') {
-        //     setFormulario({ ...formulario, bairro: valor });            
-        // } 
+        } else if (tipo === 'bairro') {
+            setFormulario({ ...formulario, bairro: valor });            
+        } 
 
     }    
 
     function handleSubmit() {
-        // setLoading(true);
-        // router.push({
-        //     pathname: '/busca',
-        //     query: formulario,
-        // })
+        setLoading(true);
+        router.push({
+            pathname: '/busca',
+            query: formulario,
+        })
     }
  
     return (
