@@ -1,7 +1,10 @@
 import ListImoveis from "../components/listImoveis";
+import Head from "next/head";
+import { descriptionDefault, titleSite, urlFavicon, urlSite } from "../utils";
+import { useRouter } from "next/router";
 
-
-export default function Busca(){
+export default function Busca(props){
+    const router = useRouter()
     return (
         <>
         <Head>                   
@@ -25,7 +28,7 @@ export default function Busca(){
                 <meta name="description" content={descriptionDefault} />
                 <meta name="og:site_name" property="og:site_name" content={titleSite} />
                 <meta name="og:title" property="og:title" content={`Resultado da Busca | ${titleSite}`} />
-                <meta name="og:url" property="og:url" content={`${urlSite}/busca${queryInicial}`} /> 
+                <meta name="og:url" property="og:url" content={`${urlSite}/busca${router.query}`} /> 
                 <meta name="og:description" property="og:description" content={descriptionDefault} />                             
                 <meta name="og:image" property="og:image" content={`${urlFavicon}padrao.png`} />
                 <meta name="og:image:width" property="og:image:width" content="300" />
