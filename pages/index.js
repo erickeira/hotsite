@@ -1,17 +1,104 @@
 import React, { useState, useEffect, useContext } from 'react';
 import Image from 'next/image'
+
 // import { cloudflareLoader } from '../utils'
 import { AuthContext } from "../context"
-import { apiUrl, apiId } from '../utils';
+import { apiUrl, apiId, urlImgs, moneyFormatter } from '../utils';
+import Link from 'next/link';
+import Place from '../public/img/place.svg';
 
 export default function Home(props) {
-  const { destaques , noticias } = props
-
+  const { destaques , ultimasnoticias } = props
+  const isOpen = false
   return (
-    <div style={{display: 'flex', flexDirection: 'column',marginLeft: 50, marginTop: 50}}>
-      funcionando
-      {destaques[0].id}
+    <div className={`${isOpen ? 'open ': ''}main`}>
+                    
+        {/* <ContentHeader />  */}
+
+        <div className="container py-4 px-4 px-sm-0">
+        <div  className="d-none d-md-block  ">
+          {/* <Image src={logo} alt="logo" /> */}
+          </div>
+            <div className="pb-3 pb-md-5">
+                <h2 className="color-primary font-28 m-0 pb-2">Imóveis em Destaque</h2>
+                <p className="font-14 w-50 pr-0 pr-md-5">Confira em nossos principais imóveis aquele que mais se adeque as suas necessidades</p>
+            </div>
+            {/* <div className={`${ pageSkeleton ? '' : 'd-none '}row`}> */}
+        
+
+            <div className="row">
+                
+                { destaques.map(dest => (
+                    
+                    <div key={dest.id} className="col-12 col-md-6 col-xl-3 py-3 py-xl-0">
+                        <Link href={`/imovel/${dest.id}`} className="d-flex flex-column shadow h-100 item-grid" >                                
+                            <div className="foto position-relative"><Image src={`${urlImgs}/${dest.imagem}`}width={300} height={50}  alt={dest.tipo} /></div>
+                            <div className="d-flex flex-grow-1 flex-column px-3 py-3">
+                                
+                                <div className="flex-grow-2">
+                                    <div className="font-12 font-md-11 line-height-100">{dest.finalidade}{dest.tipo && <small className="ml-1 font-italic opacity-50">({dest.tipo})</small>}</div>
+                                    <div className="font-20 color-primary">
+                                        { dest.valor ? (
+                                            <b>R$ {moneyFormatter(dest.valor)}</b>
+                                        ) :
+                                        (
+                                            <b>SEM VALOR</b>
+                                        ) }                                                    
+                                    </div>
+                                    { dest.valor_condominio && <div className="font-12 font-md-11 line-height-100 color-secondary">Condomínio: R$ {moneyFormatter(dest.valor_condominio)}</div> }
+                                </div>
+
+                                <div className="d-flex infos flex-grow-1 align-items-center py-3">
+                                    <div className="d-flex">
+                                        { dest.dormitorios != 0 && <div className="info info-dormitorios font-12 font-md-11 line-height-100 pr-3"><div>{dest.dormitorios}</div></div> }
+                                        { dest.banheiros != 0 && <div className="info info-banheiros font-12 font-md-11 line-height-100 pr-3"><div>{dest.banheiros}</div></div> }
+                                        { dest.area != 0 && <div className="info info-area font-12 font-md-11 line-height-100 pr-3"><div>{dest.area} m<sup>2</sup></div></div> }
+                                    </div>
+                                </div>
+                                
+                                <div className="endereco font-12 line-height-130">
+                                    <Image src={Place} width={72} height={16} alt=""  />
+                                    {`${dest.bairro} | ${dest.cidade}/${dest.uf}`}
+                                </div>
+                                
+                            </div>                                
+                        </Link>
+                    </div>
+
+                )) }
+
+            </div>
+        </div>
+
+        <div className="container py-5 px-4 px-sm-0">
+            <div className="pb-3 pb-md-5">
+                <h2 className="color-primary font-28 m-0 pb-2">Notícias Imobiliárias</h2>
+                <p className="font-14 w-50 pr-0 pr-md-5">Fique por dentro das últimas notícias do setor imobiliário.</p>
+            </div>
+            
+      
+            <div className="row">
+
+                { ultimasnoticias.map(noti => (
+                    <div key={noti.id} className="col-12 col-md-6 col-xl-3 py-3 py-xl-0">
+
+                        <Link href={`/noticia/${noti.id}`} className="d-flex flex-column shadow h-100 item-grid-noticia">                                
+                            <div className="foto"><Image src={`${urlImgs}/${noti.imagem}`}width={300} height={50} alt={noti.titulo} /></div>
+                            <div className="d-flex flex-grow-1 flex-column px-3 py-3">                                            
+                                <div className="flex-grow-1"><h2 className="font-14 line-height-130 color-secondary m-0">{noti.titulo}</h2></div>
+                                <div className="py-3"><p className="m-0 font-14 line-height-130">{ noti.resumo }</p></div>
+                                <div className="ler-mais color-primary"><span className="line-height-100 font-14">LER MATÉRIA COMPLETA</span></div>
+                            </div>                                
+                        </Link>
+
+                    </div>
+                )) }
+
+            </div>
+        </div> 
+
     </div>
+
   )
 }
 
