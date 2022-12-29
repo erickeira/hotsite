@@ -57,7 +57,7 @@ export default function Home(props) {
                                 </div>
                                 
                                 <div className="endereco font-12 line-height-130">
-                                    <Image src={Place} width={72} height={16} alt=""  />
+                                    <Image src={Place} loader={Place} width={72} height={16} alt=""  />
                                     {`${dest.bairro} | ${dest.cidade}/${dest.uf}`}
                                 </div>
                                 
