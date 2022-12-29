@@ -177,12 +177,7 @@ function verificarCreci(creci){
 };
 
 const cloudflareLoader = ({ src, width, quality }) => {
-    const params = [`width=${width}`];
-    if (quality) {
-      params.push(`quality=${quality}`);
-    }
-    const paramsString = params.join(',');
-    return `https://static-dev.infoimoveis.com.br/cdn-cgi/image/${paramsString}/${normalizeSrc(src)}`;
+    return `https://static-dev.infoimoveis.com.br/${normalizeSrc(src)}`;
 };
 
 

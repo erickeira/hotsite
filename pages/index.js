@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 // import { cloudflareLoader } from '../utils'
 import { AuthContext } from "../context"
-import { apiUrl, apiId, urlImgs, moneyFormatter } from '../utils';
+import { apiUrl, apiId, urlImgs, moneyFormatter, cloudflareLoader } from '../utils';
 import Link from 'next/link';
 import Place from '../public/img/place.svg';
 
@@ -32,7 +32,7 @@ export default function Home(props) {
                     
                     <div key={dest.id} className="col-12 col-md-6 col-xl-3 py-3 py-xl-0">
                         <Link href={`/imovel/${dest.id}`} className="d-flex flex-column shadow h-100 item-grid" >                                
-                            <div className="foto position-relative"><Image src={`${urlImgs}/${dest.imagem}`}width={300} height={50}  alt={dest.tipo} /></div>
+                            <div className="foto position-relative"><Image src={dest.imagem} loader={cloudflareLoader} width={300} height={50}  alt={dest.tipo} /></div>
                             <div className="d-flex flex-grow-1 flex-column px-3 py-3">
                                 
                                 <div className="flex-grow-2">
@@ -83,7 +83,7 @@ export default function Home(props) {
                     <div key={noti.id} className="col-12 col-md-6 col-xl-3 py-3 py-xl-0">
 
                         <Link href={`/noticia/${noti.id}`} className="d-flex flex-column shadow h-100 item-grid-noticia">                                
-                            <div className="foto"><Image src={`${urlImgs}/${noti.imagem}`}width={300} height={50} alt={noti.titulo} /></div>
+                            <div className="foto"><Image src={noti.imagem} loader={cloudflareLoader} width={300} height={50} alt={noti.titulo} /></div>
                             <div className="d-flex flex-grow-1 flex-column px-3 py-3">                                            
                                 <div className="flex-grow-1"><h2 className="font-14 line-height-130 color-secondary m-0">{noti.titulo}</h2></div>
                                 <div className="py-3"><p className="m-0 font-14 line-height-130">{ noti.resumo }</p></div>
