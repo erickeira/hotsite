@@ -8,6 +8,7 @@ import Select from 'react-select';
 import Paginate from 'react-js-pagination';
 
 import { urlImgs, moneyFormatter, titleSite, itensPorPagina, handleUrl, descriptionDefault, urlSite,  urlFavicon, apiId, apiUrl } from '../../utils';
+import { getValores, utils } from './functions'
 
 import SmFoto from '../../public/img/sm-foto.jpg';
 import Place from '../../public/img/place.svg';
@@ -51,7 +52,6 @@ export default function ListImoveis(props) {
     const [ loadingDados, setLoadingDados ] = useState(true);    
     const [ cidades, setCidades ] = useState([]);        
     const [ bairro, setBairro ] = useState([]); 
-    let cont = 1 
 
     useEffect(()=>{
         if(finalidadePagina){
@@ -77,58 +77,6 @@ export default function ListImoveis(props) {
         if (window.innerWidth > 770) return 
          handleRequisicao()
     }, [formulario]);
-
-    async function utils (metodo , valor){
-        const reqMetodo = metodo;
- 
-        const corpo = JSON.stringify( {
-              acoes: [    
-                  //  metodo: "cidades",  //  metodo: "bairros",  //  metodo: "valores", 
-                  { metodo: reqMetodo, params: [{ registro: valor }]}
-              ], id: apiId
-            });
-          
-          const response =  await fetch(
-              apiUrl,
-              {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: corpo
-              }
-          
-          );
-          const list = await response.json()
-          return list
-    }
-    async function getValores(metodo , valor) {
-        const reqMetodo = metodo;
-        
-          
-          if (valor == "Aluguel"){
-           valor =1;
-          }
-          else valor =2; 
-       
-      
-       const corpo = JSON.stringify( {
-             acoes: [    
-                 
-                 { metodo: reqMetodo, params: [{finalidade : valor }]}
-             ], id: apiId
-           });
-         
-         const response =  await fetch(
-             apiUrl,
-             {
-               method: 'POST',
-               headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-               body: corpo
-             }
-         
-         );
-         const list = await response.json()
-         return list 
-     }
 
     function handleRequisicao(){
         router.push({
@@ -161,7 +109,7 @@ export default function ListImoveis(props) {
         setLoadingDados(false)
     }
     
-    async function handleOptionChange(tipo, valor) {  
+    async function handleOptionChange(tipo, valor) {
         switch (tipo) {
             
             case 'finalidade':
@@ -218,7 +166,6 @@ export default function ListImoveis(props) {
     }
     
     async function getDados({ ...search }) {
-        return
         setLoading(true);
         let auxSearch = {...search}
         if(auxSearch.finalidade) auxSearch.finalidade = auxSearch.finalidade == "Venda"? 2:1;
