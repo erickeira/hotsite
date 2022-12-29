@@ -18,11 +18,7 @@ import CardBusca from '../cardBusca';
 export default function ListImoveis(props) {    
     const router = useRouter();
     const { finalidadePagina } = props
-    // const {finalidades,tipoimoveis,estados,valores, setValores} = useContext(AuthContext);
-    const finalidades = []
-    const tipoimoveis = []
-    const estados = []
-    const valores = { valor_minimo: 0, valor_maximo: 10}
+    const {finalidades,tipoimoveis,estados,valores, setValores} = useContext(AuthContext);
     const queryInicial = router.query;
     const [ formulario, setFormulario ] = useState(queryInicial);  
     const arrayFinalidades = finalidades.map(item => {return { value: item, label:item}})     
@@ -91,48 +87,7 @@ export default function ListImoveis(props) {
     }
     
     async function handleOptionChange(tipo, valor) {
-        switch (tipo) {
-            
-            case 'finalidade':
-                const response = await getValores('valores', valor);
-                setValores(response.valores)
-                setFormulario({ ...formulario, ...{finalidade: valor, valorde: parseInt(response.valores.valor_minimo), valorate: parseInt(response.valores.valor_maximo)} });
-                break;
-            case 'tipo':
-                setFormulario({ ...formulario, ...{tipo: valor} });
-                break;
 
-            case 'uf':
-                setFormulario({ ...formulario, uf: valor });
-                setCidades([{value: '', label: 'Carregando'}]);
-                getCidade(valor)
-                break;
-
-            case 'cidade':
-                setFormulario({ ...formulario, cidade: valor });
-                setBairro([{value: '', label: 'Carregando'}]);
-                getBairro(valor)
-                break;
-
-            case 'bairro':
-                setFormulario({ ...formulario, bairro: valor }); 
-                break;
-
-            case 'valorde':
-                setFormulario({ ...formulario, valorde: valor });
-                break;
-
-            case 'valorate':
-                setFormulario({ ...formulario, valorate: valor }); 
-                break;
-                
-            default:
-                
-                break;
-        }
-        
-      
-       
     }
 
     async function handleSubmit() {
@@ -147,37 +102,7 @@ export default function ListImoveis(props) {
     }
     
     async function getDados({ ...search }) {
-        setLoading(true);
-        let auxSearch = {...search}
-        if(auxSearch.finalidade) auxSearch.finalidade = auxSearch.finalidade == "Venda"? 2:1;
-        const corpo = JSON.stringify( {
-            acoes: [  
-                
-                { 
-                    metodo: "busca", 
-                    params: [ 
-                        {                             
-                            resultados: 12,
-                            ...auxSearch
-                        }]
-                }
-            ], id: apiId
-        });
-        
-        const response =  await fetch(
-            apiUrl,
-            {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: corpo
-            }
-        
-        );
-        const list = await response.json()
-        setTotalImoveis(list.busca.total_registros);
-        setImoveis(list.busca.total_registros ? list.busca.imoveis : []);
-        setTimeout(() => {setLoading(false)}, 100);
-      
+
     }
 
     let renderSkeletonList = [];
