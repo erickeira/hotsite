@@ -181,7 +181,7 @@ const cloudflareLoader = ({ src, width, quality }) => {
 };
 
 const loaderImage = ({ src, width, quality }) => {
-    return `htttp://hotsite-8sf.pages.dev/img/${normalizeSrc(src)}`;
+    return `/img/${normalizeSrc(src)}`;
 };
 
 
