@@ -1,6 +1,6 @@
 import Select from 'react-select';
 export default function InputSelect(props){
-    const { value, onChange, options, styles, formulario } = props
+    const { onChange, options, styles, selecionado } = props
     return(
         <Select
             className="select" 

@@ -3,6 +3,7 @@ import Head from "next/head";
 import { apiId, apiUrl, descriptionDefault, titleSite, urlFavicon, urlSite } from "../utils";
 import { useRouter } from "next/router";
 import CardBusca from "../components/cardBusca";
+import ContentHeader from '../components/ContentHeaderMain';
 
 export default function Busca(props){
     const router = useRouter()
@@ -38,7 +39,8 @@ export default function Busca(props){
                 <meta name="og:image:height" property="og:image:height" content="300" />
                 <title>Resultado da Busca | { titleSite }</title>
             </Head>
-            <CardBusca/>
+            {/* <CardBusca/> */}
+            <ContentHeader/>
             <ListImoveis busca={busca}/>
         </>
     )
