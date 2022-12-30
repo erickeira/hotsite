@@ -58,7 +58,7 @@ export default function CardBusca(props){
         <div className="container px-4 px-sm-0">
             <div className="d-none d-md-block searchbox mt-2 mt-md-5 ">
                 <div className="row shadow mx-0 p-4">
-                    <div className="col-3">
+                    {/* <div className="col-3">
                         <Select 
                             className="select" 
                             classNamePrefix="react-select" 
@@ -69,7 +69,7 @@ export default function CardBusca(props){
                             styles={customStyles} 
                         />
                     </div>
-                    {/* <div className="col-3">       
+                    <div className="col-3">       
                         <Select 
                             className="select" 
                             classNamePrefix="react-select" 
@@ -111,8 +111,8 @@ export default function CardBusca(props){
                             options={bairro} noOptionsMessage={() => 'Selecione'}  
                             styles={customStyles}
                         />
-                    </div>   */}
-        
+                    </div>  
+         */}
                     <div className="col-5 pt-3">
                         <label className="d-block  imputValorDesejadoB font-14 select pb-3 ms-3">VALOR DESEJADO</label>  
                         <div>
