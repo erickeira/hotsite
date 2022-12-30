@@ -5,6 +5,7 @@ import Select from 'react-select';
 import { AuthContext } from '../../context';
 
 import { urlImgs, moneyFormatter, titleSite, itensPorPagina, handleUrl, descriptionDefault, urlSite,  urlFavicon, apiId, apiUrl } from '../../utils';
+import InputSelect from '../inputSelect';
 const customStyles = {
     
     menuPortal: provided => ({ ...provided, zIndex: 9999, fontSize: 14 }),
@@ -58,6 +59,14 @@ export default function CardBusca(props){
         <div className="container px-4 px-sm-0">
             <div className="d-none d-md-block searchbox mt-2 mt-md-5 ">
                 <div className="row shadow mx-0 p-4">
+                    <div className="col-3">
+                        <InputSelect
+                            options={arrayFinalidades || []}
+                            selecionado={formulario.finalidade}
+                            styles={customStyles}
+                            onChange={e => mudarDadosFormulario({finalidade : e.value})} 
+                        />
+                    </div>
                     {/* <div className="col-3">
                         <Select 
                             className="select" 
