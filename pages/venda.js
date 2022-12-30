@@ -49,7 +49,7 @@ export async function getServerSideProps({req, res}){
                 metodo: "busca", 
                 params: [ 
                     {                             
-                        resultados: 12,
+                        resultados: 1,
                         finalidade: 2
                     }]
             }

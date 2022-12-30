@@ -52,7 +52,7 @@ export async function getServerSideProps(context){
                 metodo: "busca", 
                 params: [ 
                     {                             
-                        resultados: 12,
+                        resultados: 1,
                         ...query
                     }]
             }
