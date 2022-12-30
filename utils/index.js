@@ -13,7 +13,7 @@ const headerFixed = true;
 const scrollTopDist = 200;
 const gaId = '';
 const reloadTime = 5000;
-
+const hostName = "https://hotsite-8sf.pages.dev/" 
 
 
 const defaulTheme = {    
@@ -181,7 +181,7 @@ const cloudflareLoader = ({ src, width, quality }) => {
 };
 
 const loaderImage = ({ src, width, quality }) => {
-    return `http://hotsite-8sf.pages.dev/${normalizeSrc(src)}`;
+    return `${hostName}${normalizeSrc(src)}`;
 };
 
 
