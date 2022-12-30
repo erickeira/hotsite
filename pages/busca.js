@@ -1,10 +1,12 @@
 import ListImoveis from "../components/listImoveis";
 import Head from "next/head";
-import { descriptionDefault, titleSite, urlFavicon, urlSite } from "../utils";
+import { apiId, apiUrl, descriptionDefault, titleSite, urlFavicon, urlSite } from "../utils";
 import { useRouter } from "next/router";
 
 export default function Busca(props){
     const router = useRouter()
+    const { busca } = props.list
+    
     return (
         <>
         <Head>                   
@@ -35,7 +37,41 @@ export default function Busca(props){
                 <meta name="og:image:height" property="og:image:height" content="300" />
                 <title>Resultado da Busca | { titleSite }</title>
             </Head>
-            <ListImoveis/>
+            <ListImoveis busca={busca}/>
         </>
     )
 }
+
+export async function getServerSideProps(context){
+    const { query } = context
+    if(query.finalidade) query.finalidade == 'Venda' ? query.finalidade  = 2 : query.finalidade  = 1
+    const corpo = JSON.stringify( {
+        acoes: [  
+            
+            { 
+                metodo: "busca", 
+                params: [ 
+                    {                             
+                        resultados: 12,
+                        ...query
+                    }]
+            }
+        ], id: apiId
+    });
+    
+    const response =  await fetch(
+        apiUrl,
+        {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: corpo
+        }
+    
+    );
+    const list = await response.json()
+    return { 
+        props: { list }
+    }
+}
+
+

@@ -3,7 +3,6 @@
 
 
 :root {
-    --hostname: "https://localhost:3000/";
     --nav-fixed-width: 200;
     --nav-fixed-tranform: -200;
     --header-height: 165;
