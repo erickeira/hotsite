@@ -57,53 +57,59 @@ export default function CardBusca(props){
     return(
         <div className="d-none d-md-block searchbox mt-2 mt-md-5 ">
             <div className="row shadow mx-0 p-4">
-                
                 <div className="col-3">
-                    { 
-                        loadingDados  ? 
-                        <div style={{backgroundColor: '#d1d1d1', height: 40, width: '100%'}}/>
-                        :
-                        <Select className="select" classNamePrefix="react-select" value={arrayFinalidades.find(item => item.value == (formulario.finalidade) )} placeholder="FINALIDADE" onChange={e => mudarDadosFormulario({finalidade : e.value})}  options={arrayFinalidades} 
-                        styles={customStyles} />
-                    }
+                    <Select 
+                        className="select" 
+                        classNamePrefix="react-select" 
+                        value={arrayFinalidades.find(item => item.value == (formulario.finalidade) )} 
+                        placeholder="FINALIDADE" 
+                        onChange={e => mudarDadosFormulario({finalidade : e.value})}  
+                        options={arrayFinalidades} 
+                        styles={customStyles} 
+                    />
                 </div>
-                <div className="col-3">
-                    
-                    { 
-                        loadingDados  ? 
-                        <div style={{backgroundColor: '#d1d1d1', height: 40, width: '100%'}}/>
-                        :    
-                        <Select className="select" classNamePrefix="react-select" value={tipoimoveis.find(item => item.value == formulario.tipo)} placeholder="TIPO IMÓVEL" onChange={e => mudarDadosFormulario({ tipo : e.value })} options={tipoimoveis} 
-                        styles={customStyles} />
-                    }
+                <div className="col-3">       
+                    <Select 
+                        className="select" 
+                        classNamePrefix="react-select" 
+                        value={tipoimoveis.find(item => item.value == formulario.tipo)} 
+                        placeholder="TIPO IMÓVEL" 
+                        onChange={e => mudarDadosFormulario({ tipo : e.value })} 
+                        options={tipoimoveis} 
+                        styles={customStyles} 
+                    />
                 </div>
                 <div className="col-2">
-                    { 
-                        loadingDados  ? 
-                        <div style={{backgroundColor: '#d1d1d1', height: 40, width: '100%'}}/>
-                        :
-                        <Select className="select" classNamePrefix="react-select" value={estados.find(item => item.value == formulario.uf)} placeholder="UF" onChange={e => mudarDadosFormulario({ uf : e.value })} options={estados} 
-                        styles={customStyles} />
-                    }
+                    <Select 
+                        className="select" 
+                        classNamePrefix="react-select" 
+                        value={estados.find(item => item.value == formulario.uf)} 
+                        placeholder="UF" 
+                        onChange={e => mudarDadosFormulario({ uf : e.value })} 
+                        options={estados} 
+                        styles={customStyles} 
+                    />
                 </div>
                 <div className="col-4">
-                    { 
-                        loadingDados ? 
-                        <div style={{backgroundColor: '#d1d1d1', height: 40, width: '100%'}}/>
-                        :
-                        <Select className="select" classNamePrefix="react-select" value={ cidades?.find(item => item.value == formulario.cidade)} placeholder="CIDADE" onChange={e => mudarDadosFormulario({ cidade : e.value })} options={cidades} noOptionsMessage={() => 'Selecione'}
-                        styles={customStyles}/> 
-                    }
+                    <Select 
+                        className="select" 
+                        classNamePrefix="react-select" 
+                        value={ cidades?.find(item => item.value == formulario.cidade)} 
+                        placeholder="CIDADE" onChange={e => mudarDadosFormulario({ cidade : e.value })} 
+                        options={cidades} 
+                        noOptionsMessage={() => 'Selecione'}
+                        styles={customStyles}
+                    /> 
                 </div>
                 <div className="col-3 pt-3">
-                    { 
-                        loadingDados ? 
-                        <div style={{backgroundColor: '#d1d1d1', height: 40, width: '100%'}}/>
-                        :
-                        <Select className="select" classNamePrefix="react-select" value={bairro?.find(item => item.value == formulario.bairro)} placeholder="BAIRRO" onChange={e => mudarDadosFormulario({ bairro : e.value})} options={bairro} noOptionsMessage={() => 'Selecione'}  
+                    <Select 
+                        className="select" 
+                        classNamePrefix="react-select" 
+                        value={bairro?.find(item => item.value == formulario.bairro)} 
+                        placeholder="BAIRRO" onChange={e => mudarDadosFormulario({ bairro : e.value})} 
+                        options={bairro} noOptionsMessage={() => 'Selecione'}  
                         styles={customStyles}
                     />
-                    }
                 </div>
     
                 <div className="col-5 pt-3">

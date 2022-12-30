@@ -46,7 +46,6 @@ export default function Busca(props){
 
 export async function getServerSideProps(context){
     const { query } = context
-    if(query.finalidade) query.finalidade == 'Venda' ? query.finalidade  = 2 : query.finalidade  = 1
     const corpo = JSON.stringify( {
         acoes: [  
             
