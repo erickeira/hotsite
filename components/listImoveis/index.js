@@ -13,6 +13,7 @@ import SmFoto from '../../public/img/sm-foto.jpg';
 import Place from '../../public/img/place.svg';
 import { useRouter } from 'next/router';
 import CardBusca from '../cardBusca';
+import { sendError } from 'next/dist/server/api-utils';
 
 export default function ListImoveis(props) {    
     const router = useRouter();
@@ -25,7 +26,6 @@ export default function ListImoveis(props) {
     const [ loadingDados, setLoadingDados ] = useState(true);    
     const [ cidades, setCidades ] = useState([]);        
     const [ bairro, setBairro ] = useState([]); 
-    let entrouNaPagina = false;
 
     useEffect(()=>{
         if(finalidadePagina) setFormulario({...formulario, ...{finalidade: finalidadePagina}})
@@ -121,8 +121,6 @@ export default function ListImoveis(props) {
 
     let renderSkeletonList = [];
     for (let i = 0; i < itensPorPagina; i++) { renderSkeletonList[i] = i; }
-
-    console.log(queryInicial)
 
     return (
 

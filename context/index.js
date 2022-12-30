@@ -15,11 +15,10 @@ export default function AuthProvider({children}){
     const [loadingDados, setLoadingDados] = useState(true)
  
     useEffect(() => {
-     
-     getDados();
-     
+     if(!anunciante) getDados();
+     else setLoadingDados(false)
     },[]);
-   
+
  
     async function getDados (){
         setLoadingDados(true)
