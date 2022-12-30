@@ -19,109 +19,10 @@ export default function ListImoveis(props) {
     const router = useRouter();
     const { finalidadePagina, busca } = props
     const {imoveis, total_registros} = busca
-    const {finalidades,tipoimoveis,estados,valores, setValores} = useContext(AuthContext);
     const queryInicial = router.query;
-    const [ formulario, setFormulario ] = useState(queryInicial);  
-    const arrayFinalidades = finalidades.map(item => {return { value: item, label:item}})     
-    const [ loadingDados, setLoadingDados ] = useState(true);    
-    const [ cidades, setCidades ] = useState([]);        
-    const [ bairro, setBairro ] = useState([]); 
 
-    useEffect(()=>{
-        if(finalidadePagina) setFormulario({...formulario, ...{finalidade: finalidadePagina}})
-        if(queryInicial.uf) getCidade(queryInicial.uf)
-        if(queryInicial.cidade) getBairro(queryInicial.cidade)
-        if(!queryInicial.uf && !queryInicial.cidade) setLoadingDados(false)
-    },[]);
-
-    function mudarDadosFormulario(dados){
-     setFormulario({...formulario, ...dados});
-    }
- 
-    useEffect(() => {
-        if (window.innerWidth > 770) return 
-         handleRequisicao()
-    }, [formulario]);
-
-    function handleRequisicao(){
-        if (formulario.uf) getCidade(formulario.uf);
-        if (formulario.cidade) getBairro(formulario.cidade);       
-        handleScroll()
-    }
-   
-    function handleScroll() {
-        window.scroll({ top: 0, left: 0, behavior: 'smooth' });
-    }
-
-    async function getCidade(valor) {
-        setLoadingDados(true)
-        const metodo =  "cidades";
-        const data = await utils( metodo ,valor);
-        setCidades(data.cidades); 
-        setLoadingDados(false)
-    }
-
-    async function getBairro(valor) {
-        const metodo =  "bairros";
-        const data = await utils( metodo ,valor);         
-        setBairro(data.bairros); 
-        setLoadingDados(false)
-    }
     
-    async function handleOptionChange(tipo, valor) {
-        switch (tipo) {
-            
-            case 'finalidade':
-                const response = await getValores('valores', valor);
-                setValores(response.valores)
-                setFormulario({ ...formulario, ...{finalidade: valor, valorde: parseInt(response.valores.valor_minimo), valorate: parseInt(response.valores.valor_maximo)} });
-                break;
-            case 'tipo':
-                setFormulario({ ...formulario, ...{tipo: valor} });
-                break;
-
-            case 'uf':
-                setFormulario({ ...formulario, uf: valor });
-                setCidades([{value: '', label: 'Carregando'}]);
-                getCidade(valor)
-                break;
-
-            case 'cidade':
-                setFormulario({ ...formulario, cidade: valor });
-                setBairro([{value: '', label: 'Carregando'}]);
-                getBairro(valor)
-                break;
-
-            case 'bairro':
-                setFormulario({ ...formulario, bairro: valor }); 
-                break;
-
-            case 'valorde':
-                setFormulario({ ...formulario, valorde: valor });
-                break;
-
-            case 'valorate':
-                setFormulario({ ...formulario, valorate: valor }); 
-                break;
-                
-            default:
-                
-                break;
-        }
-    }
-
-    async function handleSubmit() {
-        router.push({
-            pathname: '/busca',
-            query: {...formulario},
-        })
-    }
-    
-   
-
-    let renderSkeletonList = [];
-    for (let i = 0; i < itensPorPagina; i++) { renderSkeletonList[i] = i; }
-
+    if(!imoveis?.length > 0) return <div className="text-center py-5 my-5 font-32 opacity-50">Nenhum imóvel encontrado</div> 
     return (
 
         <>             
@@ -130,23 +31,6 @@ export default function ListImoveis(props) {
                 {/* <ContentHeade title="Resultado da Busca" noSearch={true}  callbackchage={ (dadosFormulario) => setFormulario(dadosFormulario) } busca dadosFiltrados={formulario}/> */}
                 
                 <div className="container px-4 px-sm-0">
-
-                    <CardBusca
-                        loadingDados={loadingDados}
-                        arrayFinalidades={arrayFinalidades}
-                        tipoimoveis={tipoimoveis}
-                        formulario={formulario}
-                        estados={estados}
-                        cidades={cidades}
-                        bairro={bairro}
-                        valores={valores}
-                        
-                        handleOptionChange={(tipo, value) => handleOptionChange(tipo,value)}
-                        mudarDadosFormulario={(e) => mudarDadosFormulario(e)}
-                        handleSubmit={() => handleSubmit()}
-                    />
-
-                    { imoveis?.length > 0 ?  (
                         <>
                         <header className= "d-flex topo-grid justify-content-between align-items-md-center flex-column flex-md-row pt-2 pt-md-5">
                             <div className="d-none d-md-block font-14 font-md-18 qtde pr-5">
@@ -227,11 +111,7 @@ export default function ListImoveis(props) {
                             </div> 
                         ) }
 
-                        </>                     
-                    ) :( 
-                            <div className="text-center py-5 my-5 font-32 opacity-50">Nenhum imóvel encontrado</div> 
-                                     
-                   )}                                        
+                        </>                                                       
 
                 </div>
 
