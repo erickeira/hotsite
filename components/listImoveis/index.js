@@ -12,7 +12,6 @@ import { getValores, utils } from './functions'
 import SmFoto from '../../public/img/sm-foto.jpg';
 import Place from '../../public/img/place.svg';
 import { useRouter } from 'next/router';
-import CardBusca from '../cardBusca';
 import { sendError } from 'next/dist/server/api-utils';
 
 export default function ListImoveis(props) {    
