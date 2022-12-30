@@ -39,8 +39,7 @@ export default function Busca(props){
                 <meta name="og:image:height" property="og:image:height" content="300" />
                 <title>Resultado da Busca | { titleSite }</title>
             </Head>
-            <CardBusca/>
-            {/* <ContentHeader/> */}
+            <ContentHeader/>
             <ListImoveis busca={busca}/>
         </>
     )
