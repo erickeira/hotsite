@@ -2,7 +2,6 @@ import ListImoveis from "../components/listImoveis";
 import Head from "next/head";
 import { apiId, apiUrl, descriptionDefault, titleSite, urlFavicon, urlSite } from "../utils";
 import { useRouter } from "next/router";
-import CardBusca from "../components/cardBusca";
 import ContentHeader from '../components/ContentHeaderMain';
 
 export default function Busca(props){
