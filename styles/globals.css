@@ -3,8 +3,7 @@
 
 
 :root {
-    --hostname: "https://hotsite-8sf.pages.dev/"
-    
+    --hostname: "https://hotsite-8sf.pages.dev/";
     --nav-fixed-width: 200;
     --nav-fixed-tranform: -200;
     --header-height: 165;
@@ -13,7 +12,6 @@
     --content-secondary-header-height-mobile: 60;
     --map-height: 250;        
     --footer-height: 255;
-
     --main-background: #FFF;
     --default-color: #313131;
     --placeholder-color: rgb(128, 128, 128);
