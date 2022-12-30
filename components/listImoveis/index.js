@@ -6,7 +6,7 @@ import { Range } from 'react-range';
 import Select from 'react-select';
 import Paginate from 'react-js-pagination';
 
-import { urlImgs, moneyFormatter, titleSite, itensPorPagina, handleUrl, descriptionDefault, urlSite,  urlFavicon, apiId, apiUrl } from '../../utils';
+import { urlImgs, moneyFormatter, titleSite, itensPorPagina, handleUrl, descriptionDefault, urlSite,  urlFavicon, apiId, apiUrl, cloudflareLoader } from '../../utils';
 import { getValores, utils } from './functions'
 
 import SmFoto from '../../public/img/sm-foto.jpg';
@@ -49,7 +49,7 @@ export default function ListImoveis(props) {
                                             
                                             <div className="foto position-relative">
                                                 { imovel.imagem ? (
-                                                    <Image src={`${urlImgs}/${imovel.imagem}`} alt={imovel.tipo} width="290" height="100"/> 
+                                                    <Image src={imovel.imagem} loader={cloudflareLoader} alt={imovel.tipo} width="290" height="100"/> 
                                                 
                                                 ) : <Image src={SmFoto} alt={imovel.tipo}  width="290" height="100"/> }      
                                                 {/* <Skeleton className="skeleton-absolute" /> */}
@@ -104,7 +104,7 @@ export default function ListImoveis(props) {
                                     onChange={e => {
                                         router.push({
                                             pathname:"/busca",
-                                            query: {...formulario,...{pg: e}},
+                                            query: {...queryInicial,...{pg: e}},
                                         })
                                     }}
                                 /> 

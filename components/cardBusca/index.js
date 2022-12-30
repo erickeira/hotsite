@@ -1,5 +1,8 @@
+import { useRouter } from 'next/router';
+import { useContext, useState } from 'react';
 import { Range } from 'react-range';
 import Select from 'react-select';
+import { AuthContext } from '../../context';
 
 import { urlImgs, moneyFormatter, titleSite, itensPorPagina, handleUrl, descriptionDefault, urlSite,  urlFavicon, apiId, apiUrl } from '../../utils';
 const customStyles = {
@@ -26,21 +29,31 @@ const customStyles = {
   }
 
 export default function CardBusca(props){
-    const{
-        arrayFinalidades,
-        loadingDados,
-        formulario,
-        estados,
-        tipoimoveis,
-        cidades,
-        bairro,
-        valores,
-        handleOptionChange,
-        mudarDadosFormulario,
-        handleSubmit,
-        loading
-    } = props
+    const router = useRouter()
+    const {finalidades,tipoimoveis,estados,valores, setValores} = useContext(AuthContext);
+    const [ formulario, setFormulario ] = useState(router.query);  
+    const arrayFinalidades = finalidades.map(item => {return { value: item, label:item}})     
+    const [ totalImoveis, setTotalImoveis ] = useState();
+    const [ listaImoveis, setImoveis ] = useState([]);
+    const [ pagina, setPagina ] = useState(0);
+    const [ loading, setLoading ] = useState(false);  
+    const [ loadingDados, setLoadingDados ] = useState(false);    
+    const [ cidades, setCidades ] = useState([]);        
+    const [ bairro, setBairro ] = useState([]); 
     const { valor_minimo, valor_maximo } = valores
+
+    function mudarDadosFormulario(dados){
+        setFormulario({...formulario, ...dados});
+    }
+
+    async function handleSubmit() {
+        setLoading(true);
+        router.push({
+            pathname: '/busca',
+            query: {...formulario},
+        })
+    }
+
     return(
         <div className="d-none d-md-block searchbox mt-2 mt-md-5 ">
             <div className="row shadow mx-0 p-4">
@@ -50,7 +63,7 @@ export default function CardBusca(props){
                         loadingDados  ? 
                         <div style={{backgroundColor: '#d1d1d1', height: 40, width: '100%'}}/>
                         :
-                        <Select className="select" classNamePrefix="react-select" value={arrayFinalidades.find(item => item.value == (formulario.finalidade) )} placeholder="FINALIDADE" onChange={e => handleOptionChange('finalidade',e.value)}  options={arrayFinalidades} 
+                        <Select className="select" classNamePrefix="react-select" value={arrayFinalidades.find(item => item.value == (formulario.finalidade) )} placeholder="FINALIDADE" onChange={e => mudarDadosFormulario({finalidade : e.value})}  options={arrayFinalidades} 
                         styles={customStyles} />
                     }
                 </div>
@@ -60,7 +73,7 @@ export default function CardBusca(props){
                         loadingDados  ? 
                         <div style={{backgroundColor: '#d1d1d1', height: 40, width: '100%'}}/>
                         :    
-                        <Select className="select" classNamePrefix="react-select" value={tipoimoveis.find(item => item.value == formulario.tipo)} placeholder="TIPO IMÓVEL" onChange={e => handleOptionChange('tipo',e.value)} options={tipoimoveis} 
+                        <Select className="select" classNamePrefix="react-select" value={tipoimoveis.find(item => item.value == formulario.tipo)} placeholder="TIPO IMÓVEL" onChange={e => mudarDadosFormulario({ tipo : e.value })} options={tipoimoveis} 
                         styles={customStyles} />
                     }
                 </div>
@@ -69,7 +82,7 @@ export default function CardBusca(props){
                         loadingDados  ? 
                         <div style={{backgroundColor: '#d1d1d1', height: 40, width: '100%'}}/>
                         :
-                        <Select className="select" classNamePrefix="react-select" value={estados.find(item => item.value == formulario.uf)} placeholder="UF" onChange={e => handleOptionChange('uf',e.value)} options={estados} 
+                        <Select className="select" classNamePrefix="react-select" value={estados.find(item => item.value == formulario.uf)} placeholder="UF" onChange={e => mudarDadosFormulario({ uf : e.value })} options={estados} 
                         styles={customStyles} />
                     }
                 </div>
@@ -78,7 +91,7 @@ export default function CardBusca(props){
                         loadingDados ? 
                         <div style={{backgroundColor: '#d1d1d1', height: 40, width: '100%'}}/>
                         :
-                        <Select className="select" classNamePrefix="react-select" value={ cidades?.find(item => item.value == formulario.cidade)} placeholder="CIDADE" onChange={e => handleOptionChange('cidade',e.value)} options={cidades} noOptionsMessage={() => 'Selecione'}
+                        <Select className="select" classNamePrefix="react-select" value={ cidades?.find(item => item.value == formulario.cidade)} placeholder="CIDADE" onChange={e => mudarDadosFormulario({ cidade : e.value })} options={cidades} noOptionsMessage={() => 'Selecione'}
                         styles={customStyles}/> 
                     }
                 </div>
@@ -87,7 +100,7 @@ export default function CardBusca(props){
                         loadingDados ? 
                         <div style={{backgroundColor: '#d1d1d1', height: 40, width: '100%'}}/>
                         :
-                        <Select className="select" classNamePrefix="react-select" value={bairro?.find(item => item.value == formulario.bairro)} placeholder="BAIRRO" onChange={e => handleOptionChange('bairro',e.value)} options={bairro} noOptionsMessage={() => 'Selecione'}  
+                        <Select className="select" classNamePrefix="react-select" value={bairro?.find(item => item.value == formulario.bairro)} placeholder="BAIRRO" onChange={e => mudarDadosFormulario({ bairro : e.value})} options={bairro} noOptionsMessage={() => 'Selecione'}  
                         styles={customStyles}
                     />
                     }
