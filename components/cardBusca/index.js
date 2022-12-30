@@ -117,7 +117,7 @@ export default function CardBusca(props){
                         <label className="d-block  imputValorDesejadoB font-14 select pb-3 ms-3">VALOR DESEJADO</label>  
                         <div>
                                 
-                            {/* <Range
+                            <Range
                                 step={1}
                                 min={ parseInt(valor_minimo)  }
                                 max={ parseInt(valor_maximo)  }
@@ -152,7 +152,7 @@ export default function CardBusca(props){
                                     }}
                                     />
                                 )}
-                            /> */}
+                            />
                                 
                                 <div className="d-flex justify-content-between font-12 pt-3 pb-1 text-center">
                                         { loadingDados ? <div style={{backgroundColor: '#d1d1d1', height: 15, width: 80}}/> : <div>R$ {moneyFormatter(formulario.valorde || valor_minimo)} </div> }
